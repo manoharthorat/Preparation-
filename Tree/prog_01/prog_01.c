@@ -128,8 +128,7 @@ int main()
 	printf("\n The total number of nodes are %d \n",CountNode(first));
 	printf("\n The total number of leaf nodes are %d \n",CountLeafNode(first));
 	printf("\n Height of the BST  %d \n",DisplayHeightBST(first,-1));
-
-
+ 
 
 
 
