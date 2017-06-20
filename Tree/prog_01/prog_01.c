@@ -130,9 +130,5 @@ int main()
 	printf("\n Height of the BST  %d \n",DisplayHeightBST(first,-1));
 
 
-
-
-
-
 	return 0;
 }
