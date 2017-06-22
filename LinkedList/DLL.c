@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+#include<string.h>
 struct node 
 {
 	struct node * prev;
@@ -39,7 +39,7 @@ int CountNode(struct node * head )
 	int count =0;
 	while(head!=NULL)
 	{
-		count ++;
+		count++;
 		head = head ->next;
 	}
 return count;
@@ -56,6 +56,7 @@ int SearchFirstOccarance(struct node * head , int no )
 			return pos;
 		}
 		head = head->next;
+	}
 
 }
 
@@ -73,28 +74,57 @@ int SearchAllOccarance(struct node * head , int no)
 	return count;
 }
 
-int InsertAtPosition(struct node ** head , int no , int pos )
+int InsertLast( struct node ** head, int no)
 {
-	struct node * newnode =(struct node * ) malloc (sizeof(stuct node ));
-	if (newnode ==NULL)
+	struct node * newnode = (struct node *) malloc(sizeof(struct node ));
+	if(newnode==NULL)
 	{
 		return 0;
 	}
-	if(pos == 1)
+	newnode->next=NULL;
+	newnode->data=no;
+	newnode->prev=NULL;
+	if(*head==NULL)
+	{
+		*head=newnode;
+		return 0;
+	}
+	else
+	{
+		struct node * temp = (*head);
+		while(temp->next !=NULL)
+		{
+			temp =temp ->next;
+		}
+		temp->next=newnode;
+		newnode->prev=temp;
+	
+	}
+return 0;
+}
+int InsertAtPosition(struct node ** head , int no , int pos )
+{
+   	if(pos == 1)
 	{
 		Insert(head,no);
 	}
 	else if (pos == CountNode(*head) + 1)
 	{
-		InserLast(head,no);
+		InsertLast(head,no);
 	}
 	else if (pos > CountNode(*head) )
 	{
-	return 0;
+		return 0;
 	}
 	else
 	{
-		struct node * temp = (struct node *) malloc (sizeof(struct node ));
+	 	struct node * newnode = (struct node *)malloc(sizeof(struct node ));				
+   		if (newnode ==NULL)
+		{	
+			return 0;
+		}
+
+		struct node * temp = (*head);
 		memset(newnode,0, sizeof(struct node ));
 		newnode->next=NULL;
 		newnode->prev=NULL;
@@ -103,12 +133,13 @@ int InsertAtPosition(struct node ** head , int no , int pos )
 		{
 			temp = temp->next;
 		}
-		nownode -> next = temp -> next;
-		temp->next -> next = newnode;
+		newnode -> next = temp -> next;
+		temp->next ->prev = newnode;
 		temp ->next = newnode;
-		newnode->prev = temp ->prev;
+		newnode->prev = temp;
 
 	}
+return 0;
 }
 
 void Display(struct node * head )
@@ -120,11 +151,63 @@ void Display(struct node * head )
 	}
 
 }
+
+int DeleteFirst(struct node ** head)
+{
+	struct node * temp = (*head);
+	if(*head==NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		*head=temp->next;
+		temp->next=NULL;
+		free(temp);
+	}
+}
+
+int DeleteLast(struct node ** head)
+{
+	struct node * temp = (*head);
+	if(*head==NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		
+	}
+}
+int DeleteAtPosition(struct node ** head, int pos)
+{
+
+}
+
+int ReverseList(struct node ** head)
+{
+
+}
 int main()
 {
 	struct  node * first=NULL;
 	Insert(&first,20);
-	
-
+	Insert(&first,30);
+	Insert(&first,40);
+	Insert(&first,50);
+	Insert(&first,20);
+	Insert(&first,60);
+	Insert(&first,70);
+	Display(first);
+	InsertLast(&first,25);
+	printf("\n");
+	Display(first);
+	printf("\nTotal Count of the nodes %d \n",CountNode(first));
+	InsertAtPosition(&first,45,4);
+	Display(first);
+	printf("\nSearch first occarance %d \n",SearchFirstOccarance(first,20));
+	printf("\nSearch All occarance %d \n",SearchAllOccarance(first,20));
+	DeleteFirst(&first);
+	Display(first);
 return 0;
 }
