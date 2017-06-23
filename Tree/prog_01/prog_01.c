@@ -128,21 +128,6 @@ int main()
 	printf("\n The total number of nodes are %d \n",CountNode(first));
 	printf("\n The total number of leaf nodes are %d \n",CountLeafNode(first));
 	printf("\n Height of the BST  %d \n",DisplayHeightBST(first,-1));
-<<<<<<< HEAD
-<<<<<<< HEAD
- 
-
-
-=======
->>>>>>> 4b9c57e87bb93f1c6402f8770b51308525a33512
-=======
-=======
- 
-
-
->>>>>>> 989da6c1262863e91d186aa4f24f62cd10f4f68c
->>>>>>> 97c80015c89a2dd70c4cec8259847b559705ae7e
-
 
 	return 0;
 }

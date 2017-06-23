@@ -176,17 +176,54 @@ int DeleteLast(struct node ** head)
 	}
 	else
 	{
-		
+		while(temp->next !=NULL)
+		{
+			temp = temp ->next;
+		}
+		temp ->prev ->next =NULL;
+		temp ->prev=NULL;
+		free(temp);
 	}
 }
 int DeleteAtPosition(struct node ** head, int pos)
 {
-
+	if(*head==NULL)
+	{
+		return 0;
+	}
+	else if(pos ==1)
+	{
+		DeleteFirst(head);
+	}
+	else if(pos == (CountNode(*head)))
+	{
+		DeleteLast(head);
+	}
+	else
+	{
+		struct node * temp =(*head);
+		for(int i=0; i< pos ; i++)
+		{
+			temp =temp ->next;
+		}
+		temp ->prev ->next = temp->next;
+		temp ->next -> prev =temp -> prev;
+		free(temp);
+	}
 }
 
-int ReverseList(struct node ** head)
-{
-
+int ReverseList(struct node * head)  // Pending 
+{	
+	struct node * temp=head;
+	while(temp->next!=NULL)
+	{
+		temp = temp->next;
+	}
+	while(temp!=head)
+	{
+		printf("%d ",temp->data);
+		temp = temp ->prev;
+	}
 }
 int main()
 {
@@ -207,7 +244,16 @@ int main()
 	Display(first);
 	printf("\nSearch first occarance %d \n",SearchFirstOccarance(first,20));
 	printf("\nSearch All occarance %d \n",SearchAllOccarance(first,20));
+	printf("\nDelet First\n");
 	DeleteFirst(&first);
 	Display(first);
+	printf("\nDelete Last \n");
+	DeleteLast(&first);
+	Display(first);
+	printf("\nDeleteAt position \n");
+	DeleteAtPosition(&first,3);
+	Display(first);
+	printf("\nReverse list \n");
+//	ReverseList(first); 
 return 0;
 }
