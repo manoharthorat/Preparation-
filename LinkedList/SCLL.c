@@ -65,28 +65,68 @@ int InsertLast(struct node **head, struct node ** tail, int no)
 	}
 return 0;	
 }
-int CountNOde(struct node * head)
+int CountNOde(struct node * head, struct node * tail)
 {
+	int count =0;
+	do {
+		count ++;
+		head = head ->next;
+	}whlile(head != tail ->next);
+return count;
 }
 int InsertAtPosition(struct node ** head , int pos, int no)
 {
+	
 }
 int SearchFirst(struct node * head)
 {
+	int pos=0;
+	do{
+		pos ++;
+		if(head -> data == no)
+		{
+			return pos;
+		}
+	head = head ->next;
+	}whiel(head != tail ->next);
+return pos;
 }
 
 int SearchLast(struct node * head)
 {
-}
-int SearchAllOccurance(struct node * head)
-{
-}
-int DeleteFirst(struct node ** head)
-{
 
 }
-int DeleteLast(struct node ** head)
+int SearchAllOccurance(struct node * head, struct node * tail)
 {
+	int count=0;
+	do {
+		if(head -> data = no)
+		{
+			count ++;
+		}
+	head = head ->next;
+	}while(head != tail -> next);
+return count ;
+}
+int DeleteFirst(struct node ** head, struct node ** tail )
+{
+	if(*head ==NULL && *tail == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		struct node * temp = (*head);
+		*head=temp->next;
+		*tail->next=temp ->next;
+		free(temp);
+	}
+
+return 0;
+}
+int DeleteLast(struct node ** head, struct node ** tail)
+{
+
 }
 int DeleteAtPosition(struct node ** head, int pos)
 {
