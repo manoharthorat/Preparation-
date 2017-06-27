@@ -158,6 +158,25 @@ void Display(struct node * head)
 	}
 }
 
+
+int DeletFirst(struct node ** head)
+{
+}
+int DeleteLast(struct node ** head)
+{
+
+}
+
+int DeleteAtPosition(struct node ** head, int pos)
+{
+
+}
+
+int ReverseList(struct node ** head )
+{
+
+}
+
 int main()
 {
 	struct node * first =NULL;

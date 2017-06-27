@@ -199,11 +199,6 @@ int ReverseList(struct node * head)
 
 }
 
-
-
-
-
-
 int main()
 {
 struct node * first=NULL;
