@@ -1,8 +1,10 @@
 #include<stdio.h>
 #include<unistd.h>
+
 int main()
 {
+	printf("A\n");
 	fork();
-	printf(" A\n");
+	printf("B\n");
 	return 0;
 }
