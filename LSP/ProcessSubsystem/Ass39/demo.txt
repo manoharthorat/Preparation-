@@ -1,0 +1,13 @@
+Single vmdk feature for VSFED
+Problem Statement
+In vSFED, we need to have separate vmdk for each model due to its different manufacturing process than SFED. Currently, we support only two models (VSFE1000 and VSFE1100) at the time of developing this feature. As the number of models increases, the time required for creating the build will increase.
+So, we need to overcome the build generation time that will be introduced by defining new models, make the manufacturing process simpler and reduce the storage requirement of build system and PXE OVA.
+Possible Solution
+To fix this problem we need to create a single vmdk and configure that vmdk at a later stage with the appropriate model.
+Technical Challenges
+The mechanism to notify the model number to vSFED.
+To create a user inputted model from the base vmdk, we will need to make changes inside of files/databases/code taking into consideration all the possible places where manufacturing script makes these changes.
+Need to take care of the vSFED Disk Partitioning logic when creating the user inputted model from the base vmdk.
+sh-product contains model related stuff (code path getting executed for specific model exclusively).
+Explore the code paths on how the model number gets selected and utilized in the code.
+Investigation
