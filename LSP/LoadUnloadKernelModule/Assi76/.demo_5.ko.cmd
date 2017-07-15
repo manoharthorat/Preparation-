@@ -1,0 +1,1 @@
+cmd_/home/manohar/Preparation-/LSP/LoadUnloadKernelModule/Assi76/demo_5.ko := ld -r -m elf_i386 -T ./scripts/module-common.lds --build-id  -o /home/manohar/Preparation-/LSP/LoadUnloadKernelModule/Assi76/demo_5.ko /home/manohar/Preparation-/LSP/LoadUnloadKernelModule/Assi76/demo_5.o /home/manohar/Preparation-/LSP/LoadUnloadKernelModule/Assi76/demo_5.mod.o
