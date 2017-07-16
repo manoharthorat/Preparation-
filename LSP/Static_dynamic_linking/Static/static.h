@@ -1,0 +1,1 @@
+int DemoAdd(int ,int);

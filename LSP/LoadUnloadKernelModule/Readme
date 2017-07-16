@@ -1,0 +1,12 @@
+- Kernel module is cosidered as object file which contains the code to extend the feature if running kernel.
+- Kernel module is genrally used to support the new hardware, file subsystem, to add new system calls.
+- We can inser kernel module in memory whenever we required, also remove it after use.
+- Source code of kernel module is written in .c file.
+- We have to create the Makefile to create .ko file.
+- .ko is kernel object file which gets loaded inside the kernel.
+- When we execute Makefile .c file gets execute and .ko file will create.
+- We can insert the .ko file inside the running kernel using the " $ insmod .ko" command.
+- If we want to add function related information or any error handling related information then we
+  have to print that information using printk funtion.
+- We can see these information/ error message inside /var/log/syslog using $tail -f /var/log/syslog command.
+
