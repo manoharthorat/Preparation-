@@ -2,30 +2,32 @@
 #include<pthread.h>
 #include<stdio.h>
 
+//Function to be consider as a thread
 void * Thread_proc(void * p)
 {
 	printf("Inside thread .. \n");
 	pthread_exit(NULL);
 }
+
 int main()
 {
 	pthread_t thread1;
 	int ret;
 	printf("Inside main thread.. \n");
-	ret = pthread_create(&thread1,
-						NULL,
-						ThreadProc,
-						NULL);
+	ret = pthread_create(&thread1,  	 //Address of pthread_t structure 
+				NULL,	 	//Thread attributes
+				Thread_proc,	//Function name
+				NULL);		//Function parameter
 	
 	if(ret != 0)
 	{
 		printf("problem in thread creation \n");
 	}
 
-	pthread_join(thread1,
-				NULL);
+	// It suspend execution of calling thread till target thread termination 
+	pthread_join(thread1,		//Thread id 
+				NULL);	//Location of  thread 
 	
-	pthread_exit(NULL);
-
+	pthread_exit(NULL);		//Terminate running thread
 return 0;
 }
