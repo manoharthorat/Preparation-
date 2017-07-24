@@ -10,7 +10,7 @@ void * Thread_proc1(void * p)
 {
 	int i=0;
 	printf("Inside thread 1 \n");
-	for(i=0; i<=1000; i++)
+	for(i=1; i<=500; i++)
 	{
 		printf("Thread 1 = %d \n",i);
 	}
@@ -20,8 +20,13 @@ void * Thread_proc1(void * p)
 //Function to be considered as a thread 
 void * Thread_proc2(void * p)
 {
-
-	pthread_exit();	
+	int i=0;
+	printf("Inside Thread 2 \n");
+	for(i=500; i>=1; i--)
+	{
+		printf("Thread 2 = %d \n",i);
+	}
+	pthread_exit(NULL);	
 }
 
 
@@ -31,13 +36,31 @@ int main()
 	int ret1, ret2;
 
 	// pthread_create function 
-	ret1= pthread_create();		
+	ret1= pthread_create(&thread1,
+							NULL,
+							Thread_proc1,
+							NULL);		
 
-	ret2= pthread_create();
+	if(ret1!=0)
+	{
+		printf("Problem in thread1 creation .. \n");
+	}
+	
+	ret2= pthread_create(&thread2,
+							NULL,
+							Thread_proc2,
+							NULL);
+	
 
-	pthread_join();
-	pthread_join();
+	if(ret2!=0)
+	{
+		printf("Problem in thread2 creation .. \n");
+	}
+	
+	
+	pthread_join(thread1,NULL);
+	pthread_join(thread2,NULL);
 
-	pthread_exit();
+	pthread_exit(NULL);
 	return 0;
 }
