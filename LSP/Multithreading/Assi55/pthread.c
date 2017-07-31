@@ -6,7 +6,7 @@ void * Thread_proc(void *p)
 {
 	long tid;
 	tid = (long)p;
-	sleep(1);
+	sleep(3);
 
 	printf("Sleeping in thread \n");
 	printf("Thread with id %ld exiting \n",tid);
@@ -27,8 +27,8 @@ int main()
 	for(i=0;i<4;i++)
 	{
 		ret = pthread_create(&thread[i],
-				Thread_proc,
 				NULL,
+				Thread_proc,
 				(void *)i);
 		if(ret !=0)
 		{
