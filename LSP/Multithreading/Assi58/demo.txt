@@ -1,0 +1,19 @@
+The i_block field in the disk inode is an array of EXT2_N_BLOCKS components that con-
+tain logical block numbers. In the following discussion, we assume that EXT2_N_
+BLOCKS has the default value, namely 15. The array represents the initial part of a
+larger data structure, which is illustrated in Figure 18-5. As can be seen in the figure,
+the 15 components of the array are of 4 different types:
+• The first 12 components yield the logical block numbers corresponding to the
+first 12 blocks of the file—to the blocks that have file block numbers from 0 to 11.
+• The component at index 12 contains the logical block number of a block, called
+indirect block, that represents a second-order array of logical block numbers.
+They correspond to the file block numbers ranging from 12 to b/4+11, where b
+is the filesystem’s block size (each logical block number is stored in 4 bytes, so
+we divide by 4 in the formula). Therefore, the kernel must look in this compo-
+nent for a pointer to a block, and then look in that block for another pointer to
+the ultimate block that contains the file contents.
+• The component at index 13 contains the logical block number of an indirect
+block containing a second-order array of logical block numbers; in turn, the
+entries of this second-order array point to third-order arrays, which store the log-
+ical block numbers that correspond to the file block numbers ranging from b/
+4+12 to (b/4) 2 +(b/4)+11.
