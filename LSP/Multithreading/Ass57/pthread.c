@@ -17,8 +17,8 @@ void * ThreadProc1(void * p)
 
 	printf("The task %d finished successfully \n",counter);
 
-	ptherad_mutex_unlock(&lock);
-	ptread_exit(NULL);
+	pthread_mutex_unlock(&lock);
+	pthread_exit(NULL);
 }
 
 
