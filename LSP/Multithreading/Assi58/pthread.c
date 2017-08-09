@@ -61,7 +61,7 @@ void * ThreadProc2(void * p)
 		}
 	}
 	close(fd);
-	printf("Small character by thread 1 is %d \n",CapCnt);
+	printf("Cap character by thread 1 is %d \n",CapCnt);
 	pthread_exit(NULL);
 }
 int main()
