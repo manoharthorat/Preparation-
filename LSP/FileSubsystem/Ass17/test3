@@ -1,0 +1,23 @@
+STAT(1)                                     User Commands                                    STAT(1)
+
+NAME
+       stat - display file or file system status
+
+	   SYNOPSIS
+	          stat [OPTION]... FILE...
+
+			  DESCRIPTION
+			         Display file or file system status.
+
+					        Mandatory arguments to long options are mandatory for short options too.
+
+							       -L, --dereference
+								                 follow links
+
+												        -f, --file-system
+														              display file system status instead of file status
+
+																	         -c  --format=FORMAT
+																			               use  the  specified  FORMAT instead of the default; output a newline after each use of
+																						                 FORMAT
+
