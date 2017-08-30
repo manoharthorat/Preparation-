@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+#include<string.h>
 
 /*
 void SmallCapDigits(char * str)
@@ -367,9 +367,104 @@ int main()
 return 0;
 }
 */
-
+/*
+char * Mystrncat(char * str1, char * str2,int no)
+{
+	while(*str1 != '\0')
+	{
+		str1++;
+	}
+	while(*str2 != '\0' && no != 0)
+	{
+		*str1 =*str2;
+		str1++;
+		str2++;
+		no--;
+	}
+	*str1 = '\0';
+	return str1;
+}
 
 int main()
 {
+	char str1[50];
+	char str2[50];
+	printf("Enter the first string\n ");
+	gets(str1);
+	printf("Enter the second string\n ");
+	gets(str2);
+	Mystrncat(str1,str2,5);
+	printf("Concated string is %s\n",str1);
+
+return 0;
+}
+*/
+/*
+Mystrnset(char * str1, char ch, int no)
+{
+	char * temp=str1;
+	while(*str1 != '\0' && no != 0)
+	{
+		*str1=ch;
+		no--;
+		str1++;
+	}
+	return temp;
+}
+int main()
+{
+	char str1[50];
+	char ch;
+	int no;
+	printf("Ente the string \n");
+	gets(str1);
+	printf("Enter the character \n");
+	scanf("%c",&ch);
+	printf("\nEnter the no.\n");
+	scanf("%d",&no);
+
+	printf("Mystrnset  %s ",Mystrnset(str1,ch,no));
+
+
+
+return 0;
+}
+*/
+int main()
+{
+	int i=0,j=0,marks[10],max;
+	char student[10][20];
+	char ch;
+	
+	printf("Enter the Name and marks of the student\n");
+	while(1)
+	{
+		scanf("%s %d",student[i], &marks[i]);
+		printf("Do you want to Enter more ?(Y/N)");
+		scanf("%c",&ch);
+		if(ch == 'Y' || ch == 'y')
+		{
+			i++;
+		}
+		else
+		{
+			break;
+		}
+		if(i==10)
+		{
+			printf("\nCannt hold the more student data\n");
+			break;
+		}
+	}
+		max=0;
+		for(j=0;j<i;j++)
+		{
+			if(marks[j]> marks[max])
+			{
+				max=j;
+			}
+		}
+		printf("\n%s got maximum marks",student[max]);
+
 return 0;
 }
